@@ -57,10 +57,10 @@ public:
 		std::vector<Vec3f> framebuffer(width * height);
 
 
-		for (size_t j = 0; j < height; j++) { // actual rendering loop
+		for (size_t j = 0; j < height; j++) {
 			for (size_t i = 0; i < width; i++) {
 				float dir_x = (i + 0.5) - width / 2.;
-				float dir_y = -(j + 0.5) + height / 2.;    // this flips the image at the same time
+				float dir_y = -(j + 0.5) + height / 2.; 
 				float dir_z = -height / (2. * tan(fov / 2.));
 				framebuffer[i + j * width] = cast_ray(Vec3f(0, 0, 0), Vec3f(dir_x, dir_y, dir_z).normalize(), spheres, lights);
 			}
@@ -97,7 +97,7 @@ private:
 		Material material;
 
 		if (!scene_intersect(orig, dir, spheres, point, N, material)) {
-			return Vec3f(0.1, 0.2, 0.1); // background color
+			return Vec3f(0.1, 0.2, 0.1);
 		}
 		float diffuse_light_intensity = 0;
 		for (size_t i = 0; i < lights.size(); i++) {
@@ -112,7 +112,7 @@ private:
 int main() {
 
 	Material  white(Vec3f(0.60, 0.78, 0.58));
-	Material  blue(Vec3f(0.3, 0.2, 0.92));//оранжевый 
+	Material  blue(Vec3f(0.3, 0.2, 0.92));
 
 	std::vector<Sphere> spheres;
 	spheres.push_back(Sphere(Vec3f(-3, -1, -12), 3, white));
