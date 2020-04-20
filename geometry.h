@@ -6,13 +6,13 @@
 #include <cassert>
 #include <iostream>
 
-template <size_t DIM, typename T> //size_t написали, чтобы не указывать все время тип переменной DIM
+template <size_t DIM, typename T> 
 class vec{};
 
-typedef vec<3, float> Vec3f;// Vec3f - это псевдоним для vec<3, float>
+typedef vec<3, float> Vec3f;
 
 template <typename T>
-struct vec<3, T> {//определение  Vec3f
+struct vec<3, T> {
 	vec() : x(T()), y(T()), z(T()) {}
 	vec(T X, T Y, T Z) : x(X), y(Y), z(Z) {}
 	T& operator[](const size_t i) { assert(i < 3); return i <= 0 ? x : (1 == i ? y : z); }
